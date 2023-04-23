@@ -1,4 +1,4 @@
-
+vim.opt.cursorline = true
 vim.opt.encoding = "utf-8"
 -- On pressing tab, insert 2 spaces
 vim.opt.expandtab = true
@@ -15,4 +15,5 @@ vim.opt.wrap = true
 -- set leader to space
 vim.g.mapleader = ' '
 
-require "keymaps"
+require "core.keymaps"
+
