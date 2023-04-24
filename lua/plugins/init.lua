@@ -17,7 +17,15 @@ local plugins = {
     end,
   },
   -- Status bar
-  'nvim-lualine/lualine.nvim',
+  {
+    'nvim-lualine/lualine.nvim',
+    opts = function()
+      return {}
+    end,
+    config = function(_, opts)
+      require("lualine").setup(opts)
+    end,
+  },
   -- Syntax Highlighting
   {
     'nvim-treesitter/nvim-treesitter',
@@ -29,6 +37,21 @@ local plugins = {
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
     end,
+  },
+  -- LSP package manager
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- :MasonUpdate updates registry contents
+    opts = function()
+      return {}
+    end,
+    config = function(_, opts)
+      require("mason").setup(opts)
+    end,
+  }, 
+  -- LSP config
+  {
+    'neovim/nvim-lspconfig'
   },
   -- Fuzzy Search
   {
