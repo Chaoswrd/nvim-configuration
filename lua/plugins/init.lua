@@ -1,6 +1,25 @@
 local plugins = {
   -- Theme
   "folke/tokyonight.nvim",
+  -- Git conflicts
+  {
+    "akinsho/git-conflict.nvim",
+    opts = function()
+      return {
+        default_mappings = true, -- disable buffer local mapping created by this plugin
+        default_commands = true, -- disable commands created by this plugin
+        disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
+        highlights = {
+          -- They must have background color, otherwise the default color will be used
+          incoming = "DiffText",
+          current = "DiffAdd",
+        },
+      }
+    end,
+    config = function(_, opts)
+      require("git-conflict").setup(opts)
+    end,
+  },
   -- Git Blame line
   "tveskag/nvim-blame-line",
   -- Git
@@ -114,8 +133,9 @@ local plugins = {
     opts = function()
       return {
         ensure_installed = {
-          "lua_ls", -- Lua Language Server
-          "yamlls", -- Yaml Language Server
+          "lua_ls",          -- Lua Language Server
+          "yamlls",          -- Yaml Language Server
+          "jedi_language_server", -- Python Language Server
         },
       }
     end,
@@ -131,6 +151,8 @@ local plugins = {
     end,
     config = function(_, opts)
       require("lspconfig").lua_ls.setup({})
+      require("lspconfig").yamlls.setup({})
+      require("lspconfig").jedi_language_server.setup({})
     end,
   },
   -- DAP server
@@ -161,6 +183,7 @@ local plugins = {
         end,
         sources = {
           null_ls.builtins.formatting.stylua,
+          null_ls.builtins.formatting.black,
           null_ls.builtins.completion.spell,
         },
       }
