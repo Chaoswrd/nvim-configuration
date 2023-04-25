@@ -1,17 +1,18 @@
+local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
+
 -- setup telescope commands
 local telescope = require("telescope.builtin")
-vim.keymap.set("n", "<leader>ff", telescope.find_files, {})
-vim.keymap.set("n", "<leader>fg", telescope.live_grep, {})
-vim.keymap.set("n", "<leader>fb", telescope.buffers, {})
-vim.keymap.set("n", "<leader>fh", telescope.help_tags, {})
-vim.keymap.set("n", "<leader>gs", telescope.grep_string, {})
+map("n", "<leader>ff", telescope.find_files, {})
+map("n", "<leader>fg", telescope.live_grep, {})
+map("n", "<leader>fb", telescope.buffers, {})
+map("n", "<leader>fh", telescope.help_tags, {})
+map("n", "<leader>gs", telescope.grep_string, {})
 
 -- setup nvim-tree commands
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<cr>", {})
+map("n", "<C-n>", ":NvimTreeToggle<cr>", { silent = true })
 
 -- setup tabline commands
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
 map("n", "<tab>", "<Cmd>BufferNext<CR>", opts)
@@ -56,49 +57,51 @@ map("n", "<leader>x", "<Cmd>BufferClose<CR>", opts)
 --
 
 -- Nvim Spider
-vim.keymap.set({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
-vim.keymap.set({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
-vim.keymap.set({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
-vim.keymap.set({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
+map({ "n", "o", "x" }, "w", "<cmd>lua require('spider').motion('w')<CR>", { desc = "Spider-w" })
+map({ "n", "o", "x" }, "e", "<cmd>lua require('spider').motion('e')<CR>", { desc = "Spider-e" })
+map({ "n", "o", "x" }, "b", "<cmd>lua require('spider').motion('b')<CR>", { desc = "Spider-b" })
+map({ "n", "o", "x" }, "ge", "<cmd>lua require('spider').motion('ge')<CR>", { desc = "Spider-ge" })
 
 -- GitBlame
-vim.keymap.set("n", "<leader>b", ":ToggleBlameLine<CR>", { silent = true })
+map("n", "<leader>b", ":ToggleBlameLine<CR>", { silent = true })
+-- Git Merge Conflict
+map("n", "<leader>dt", ":ToggleBlameLine<CR>", { silent = true })
 
 -- LSP Config
 -- -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
-vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
+map("n", "<space>e", vim.diagnostic.open_float)
+map("n", "[d", vim.diagnostic.goto_prev)
+map("n", "]d", vim.diagnostic.goto_next)
+map("n", "<space>q", vim.diagnostic.setloclist)
 
 -- Use LspAttach autocommand to only map the following keys
 -- after the language server attaches to the current buffer
 vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function(ev)
-		-- Enable completion triggered by <c-x><c-o>
-		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    -- Enable completion triggered by <c-x><c-o>
+    vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		-- Buffer local mappings.
-		-- See `:help vim.lsp.*` for documentation on any of the below functions
-		local opts = { buffer = ev.buf }
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
-		vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
-		vim.keymap.set("n", "<space>wl", function()
-			print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-		end, opts)
-		vim.keymap.set("n", "<space>D", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "<space>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
-	end,
+    -- Buffer local mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local opts = { buffer = ev.buf }
+    map("n", "gD", vim.lsp.buf.declaration, opts)
+    map("n", "gd", vim.lsp.buf.definition, opts)
+    map("n", "K", vim.lsp.buf.hover, opts)
+    map("n", "gi", vim.lsp.buf.implementation, opts)
+    map("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+    map("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
+    map("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
+    map("n", "<space>wl", function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, opts)
+    map("n", "<space>D", vim.lsp.buf.type_definition, opts)
+    map("n", "<space>rn", vim.lsp.buf.rename, opts)
+    map({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+    map("n", "gr", vim.lsp.buf.references, opts)
+    map("n", "<space>f", function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+  end,
 })
