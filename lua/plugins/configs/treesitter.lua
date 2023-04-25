@@ -1,5 +1,5 @@
 options = {
-	ensure_installed = { "c", "lua", "vim", "python", "yaml", "terraform", "helm" },
+	ensure_installed = { "c", "lua", "vim", "python", "yaml", "terraform" },
 	sync_install = false,
 	highlight = {
 		enable = true,
