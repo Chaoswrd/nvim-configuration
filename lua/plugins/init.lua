@@ -115,6 +115,7 @@ local plugins = {
       return {
         ensure_installed = {
           "lua_ls", -- Lua Language Server
+          "yamlls", -- Yaml Language Server
         },
       }
     end,
