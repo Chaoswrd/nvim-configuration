@@ -7,16 +7,7 @@ local plugins = {
 	{
 		"akinsho/git-conflict.nvim",
 		opts = function()
-			return {
-				default_mappings = true, -- disable buffer local mapping created by this plugin
-				default_commands = true, -- disable commands created by this plugin
-				disable_diagnostics = false, -- This will disable the diagnostics in a buffer whilst it is conflicted
-				highlights = {
-					-- They must have background color, otherwise the default color will be used
-					incoming = "DiffText",
-					current = "DiffAdd",
-				},
-			}
+			return require("plugins.configs.gitconflict")
 		end,
 		config = function(_, opts)
 			require("git-conflict").setup(opts)
@@ -37,10 +28,11 @@ local plugins = {
 	-- CamelCase Movement
 	{
 		"chrisgrieser/nvim-spider",
-		config = function()
-			return require("spider").setup({
-				skipInsignificantPunctuation = false,
-			})
+		opts = function()
+			require("plugins.configs.nvimspider")
+		end,
+		config = function(_, opts)
+			return require("spider").setup(opts)
 		end,
 		lazy = true,
 	},
@@ -49,13 +41,7 @@ local plugins = {
 		"glepnir/dashboard-nvim",
 		event = "VimEnter",
 		opts = function()
-			return {
-				theme = "hyper",
-				config = {
-					week_header = { enable = true },
-					disable_move = true,
-				},
-			}
+			return require("plugins.configs.dashboardnvim")
 		end,
 		config = function(_, opts)
 			require("dashboard").setup(opts)
@@ -78,9 +64,6 @@ local plugins = {
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle", "NvimTreeFocus" },
-		init = function()
-			--  require("core.utils").load_mappings "nvimtree"
-		end,
 		opts = function()
 			return require("plugins.configs.nvimtree")
 		end,
@@ -93,7 +76,7 @@ local plugins = {
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = function()
-			return {}
+			return require("plugins.configs.lualine")
 		end,
 		config = function(_, opts)
 			require("lualine").setup(opts)
@@ -133,13 +116,7 @@ local plugins = {
 	{
 		"williamboman/mason-lspconfig",
 		opts = function()
-			return {
-				ensure_installed = {
-					"lua_ls", -- Lua Language Server
-					"yamlls", -- Yaml Language Server
-					"jedi_language_server", -- Python Language Server
-				},
-			}
+			return require("plugins.configs.masonlspconfig")
 		end,
 		config = function(_, opts)
 			require("mason-lspconfig").setup(opts)
@@ -149,18 +126,12 @@ local plugins = {
 	{
 		"neovim/nvim-lspconfig",
 		opts = function()
-			return {}
+			return require("plugins.configs.nvimlspconfig")
 		end,
 		config = function(_, opts)
-			require("lspconfig").lua_ls.setup({})
-			require("lspconfig").yamlls.setup({
-				settings = {
-					yaml = {
-						keyOrdering = false,
-					},
-				},
-			})
-			require("lspconfig").jedi_language_server.setup({})
+			require("lspconfig").lua_ls.setup(opts.lua_ls)
+			require("lspconfig").yamlls.setup(opts.yamlls)
+			require("lspconfig").jedi_language_server.setup(opts.jedi_language_server)
 		end,
 	},
 	-- DAP server

@@ -14,6 +14,10 @@ local options = {
   number = true,
   -- wrap text
   wrap = true,
+  -- Remove swap files
+  swapfile = false,
+  -- Remove mouse integration
+  mouse = "",
 }
 
 local global = {
