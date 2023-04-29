@@ -8,5 +8,6 @@ local options = {
 		},
 	},
 	jedi_language_server = {},
+	clangd = {},
 }
 return options
