@@ -130,9 +130,11 @@ local plugins = {
 			return require("plugins.configs.nvimlspconfig")
 		end,
 		config = function(_, opts)
-			require("lspconfig").lua_ls.setup(opts.lua_ls)
-			require("lspconfig").yamlls.setup(opts.yamlls)
-			require("lspconfig").jedi_language_server.setup(opts.jedi_language_server)
+			local lspconfig = require("lspconfig")
+			lspconfig.lua_ls.setup(opts.lua_ls)
+			lspconfig.yamlls.setup(opts.yamlls)
+			lspconfig.jedi_language_server.setup(opts.jedi_language_server)
+			lspconfig.clangd.setup(opts.clangd)
 		end,
 	},
 	-- DAP server
