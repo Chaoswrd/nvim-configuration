@@ -135,6 +135,7 @@ local plugins = {
       lspconfig.yamlls.setup(opts.yamlls)
       lspconfig.jedi_language_server.setup(opts.jedi_language_server)
       lspconfig.clangd.setup(opts.clangd)
+      lspconfig.java_language_server.setup(opts.java_language_server)
     end,
   },
   -- DAP server
