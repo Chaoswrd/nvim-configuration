@@ -4,7 +4,6 @@ local options = {
 		"yamlls", -- Yaml Language Server
 		"jedi_language_server", -- Python Language Server
 		"clangd", -- C/C++ Language Server
-		"java_language_server", -- Java Language Server
 	},
 }
 return options
