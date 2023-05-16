@@ -9,8 +9,6 @@ map({ "n", "x" }, "cp", '"+y')
 map({ "n", "x" }, "cv", '"+p')
 -- select all
 map("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { silent = true })
--- reload source
-map("n", "<leader>r", ":source $MYVIMRC<cr>", { silent = true })
 
 -- change pane
 map("n", "<C-h>", "<C-w>h")
