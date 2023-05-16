@@ -200,6 +200,7 @@ local plugins = {
 			require("copilot_cmp").setup()
 		end,
 	},
+	-- Focus plugin
 	{
 		"folke/twilight.nvim",
 		opts = function()
@@ -209,6 +210,7 @@ local plugins = {
 			require("twilight").setup(opts)
 		end,
 	},
+	-- Better text deletes like ii and between _ _
 	{
 		"chrisgrieser/nvim-various-textobjs",
 		opts = require("plugins.configs.textobjs"),
@@ -220,6 +222,15 @@ local plugins = {
 		end,
 		config = function(_, opts)
 			require("symbols-outline").setup()
+		end,
+	},
+	{
+		"folke/trouble.nvim",
+		opts = function()
+			return {}
+		end,
+		config = function(_, opts)
+			require("trouble").setup()
 		end,
 	},
 }
