@@ -135,6 +135,7 @@ local plugins = {
 			lspconfig.lua_ls.setup(opts.lua_ls)
 			lspconfig.yamlls.setup(opts.yamlls)
 			lspconfig.jedi_language_server.setup(opts.jedi_language_server)
+			lspconfig.jdtls.setup(opts.jdtls)
 			lspconfig.clangd.setup(opts.clangd)
 			lspconfig.rust_analyzer.setup(opts.rust_analyzer)
 		end,

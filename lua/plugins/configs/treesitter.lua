@@ -1,5 +1,5 @@
 local options = {
-  ensure_installed = { "c", "lua", "vim", "python", "yaml", "terraform", "rust", "make" },
+  ensure_installed = { "c", "lua", "vim", "python", "yaml", "terraform", "rust", "make", "java" },
   sync_install = false,
   highlight = {
     enable = true,
