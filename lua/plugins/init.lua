@@ -235,6 +235,12 @@ local plugins = {
 			require("trouble").setup()
 		end,
 	},
+	-- Gives you tips on movement
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
 }
 
 -- set up Lazy package manager
