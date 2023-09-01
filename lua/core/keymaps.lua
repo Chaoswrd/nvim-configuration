@@ -4,6 +4,8 @@ map("i", "jk", "<ESC>")
 map("i", "<ESC>", "<NOP>")
 -- Movement vertically (H, M, L)
 -- Move screen to cursor (zt, zz, zb)
+-- Move full page (ctrl-f, ctrl-b)
+-- Move half page (ctrl-u, ctrl-d)
 -- use system clipboard
 map({ "n", "x" }, "cp", '"+y')
 map({ "n", "x" }, "cv", '"+p')
