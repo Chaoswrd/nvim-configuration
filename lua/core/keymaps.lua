@@ -2,8 +2,8 @@ local map = vim.keymap.set
 -- map esc to jk
 map("i", "jk", "<ESC>")
 map("i", "<ESC>", "<NOP>")
-map("n", "zz", ":update<cr>", { silent = true })
-
+-- Movement vertically (H, M, L)
+-- Move screen to cursor (zt, zz, zb)
 -- use system clipboard
 map({ "n", "x" }, "cp", '"+y')
 map({ "n", "x" }, "cv", '"+p')
