@@ -15,3 +15,6 @@ map("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { silent = true })
 -- change pane
 map("n", "<C-h>", "<C-w>h")
 map("n", "<C-l>", "<C-w>l")
+
+-- Toggle numbers
+map("n", "<leader>n", ":set number! relativenumber!<cr>")
