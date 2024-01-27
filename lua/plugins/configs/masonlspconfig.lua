@@ -6,6 +6,7 @@ local options = {
 		"jdtls", -- Java Language Server
 		"clangd", -- C/C++ Language Server
 		"rust_analyzer", -- Rust Language Server
+		"gopls", -- Go Language Server
 	},
 }
 return options

@@ -11,5 +11,6 @@ local options = {
 	jdtls = {},
 	clangd = {},
 	rust_analyzer = {},
+	gopls = {},
 }
 return options
