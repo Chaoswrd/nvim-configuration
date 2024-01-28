@@ -138,6 +138,7 @@ local plugins = {
 			lspconfig.jdtls.setup(opts.jdtls)
 			lspconfig.clangd.setup(opts.clangd)
 			lspconfig.rust_analyzer.setup(opts.rust_analyzer)
+			lspconfig.gopls.setup(opts.gopls)
 		end,
 	},
 	-- DAP server

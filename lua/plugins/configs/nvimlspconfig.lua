@@ -1,4 +1,4 @@
-local options = {
+local options = { -- Use command :LspLog to debug lsps, remember to update init.lua and install lsp
 	lua_ls = {},
 	yamlls = {
 		settings = {
