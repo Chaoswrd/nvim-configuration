@@ -6,11 +6,6 @@ map("i", "<ESC>", "<NOP>")
 -- Move screen to cursor (zt, zz, zb)
 -- Move full page (ctrl-f, ctrl-b)
 -- Move half page (ctrl-u, ctrl-d)
--- use system clipboard
-map({ "n", "x" }, "cp", '"+y')
-map({ "n", "x" }, "cv", '"+p')
--- select all
-map("n", "<leader>a", ":keepjumps normal! ggVG<cr>", { silent = true })
 
 -- change pane
 map("n", "<C-h>", "<C-w>h")
